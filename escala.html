@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+</head>
+<body>
+
+	<div class="container">
+		<h1>Escala Richer</h1>
+
+		<form id="formulario2">
+		  
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Digite a amplitude (em milimetros) medida com um sismografo(A):</label>
+		    <input type="text" class="form-control" name="amplitude" id="exampleInputPassword1" placeholder="Amplitude">
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Digite o intervalo de tempo(em segundos)(Delta T):</label>
+		    <input type="text" class="form-control" name="intervalo" id="exampleInputPassword1" placeholder="Intervalo de Tempo">
+		  </div>
+
+		  <input type="text" class="form-control" name="m" disabled="disabled">
+	
+		  <br>
+		  <button type="button" class="btn btn-primary" onclick="calcularEscala();">Calcular</button>
+		  
+
+		</form>
+
+		<script type="text/javascript">
+			
+			function calcularEscala(){
+				var form = document.getElementById("formulario2");
+
+				alert("ola");
+				var amplitude = form.amplitude.value;
+				var intervalo = form.intervalo.value;
+
+
+
+				x = Math.log10(amplitude);			/*1,3617278360175928*/
+				y = Math.log10(intervalo);		/*0,9159272116971157*/
+				m = (x + y) - 2.92;	
+				
+				alert("Log de " + amplitude + " na base 10: " + x);		
+				alert("Log de " + intervalo + " na base 10: " + y);
+				alert("Magnitude: " + m);
+
+				form.m.value = m.toFixed(2);
+
+				if(m < 3.5){
+					alert("Geralmente não sentido, mas gravado");
+				}else if(3.5 < m < 5.4){
+					alert("Ás vezes sentido, mas raramente causa danos");
+				}else if(5.5 < m < 6){
+					alert("No máximo causa pequenos danos a prédios bem construidos, mas pode danificar seriamente casas mal construidas em regiões próximas");
+				}else if(6.1 < m < 6.9){
+					alert("Pode ser destrutivo em areas em torno de até 100 km do epicentro"); 
+				}else if(7 < m < 7.9){
+					alert("Grande terremoto. Pode causar serios danos em uma grande faixa");
+				}else if(m > 8){
+					alert("Enorme terremoto. Pode causar graves danos em muitas áreas mesmo que estejam a centenas de quilômetros");
+				}
+
+			}
+
+
+		</script>
+
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+body .container .row fieldset img{
+	margin: 12px 0 0 0;
+	width: 100px;
+  	height: 100px;
+  	/*background-image: url(../img/arroz.jpg);*/
+  	border: solid 2px;
+  	font-size: 16px;
+  	background-size: 100px;
+}
+

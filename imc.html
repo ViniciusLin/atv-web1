@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" href="func.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>Calculo de IMC</h1>
+
+	<form id="formulario">
+		<div class="form-group">
+		    <label for="exampleInputEmail1">Digite seu peso:</label>
+		    <input type="text" class="form-control" name="kilos" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Peso">
+		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		</div>
+
+		<div class="form-group">
+		    <label for="exampleInputPassword1">Digite sua metragem:</label>
+		    <input type="text" class="form-control" name="metros" id="exampleInputPassword1" placeholder="Metros">
+		</div>
+
+		<div class="form-group">
+		    <label for="exampleInputPassword1">Digite seus centimetro:</label>
+		    <input type="text" class="form-control" name="centimetros" id="exampleInputPassword1" placeholder="Centimetros">
+		</div>
+
+		<input type="text" class="form-control" name="imc" disabled="disabled">
+			
+		<br>
+		<button type="button" class="btn btn-primary" onclick="calcularIMC();">Calcular</button>
+	</form>		
+	
+	</div>
+
+
+	<script type="text/javascript">
+		
+		function calcularIMC(){
+		var formulario  = document.getElementById("formulario");
+
+		var kilos = formulario.kilos.value;
+		var metros = formulario.metros.value;
+		var centimetros = formulario.centimetros.value;
+
+		var x = metros * 100;
+
+		var y = parseInt(x) + parseInt(centimetros);
+	
+		var altura = y / 100;
+
+		var imc = kilos / (altura * altura);
+
+		formulario.imc.value = imc.toFixed(2);
+
+		if(imc < 18.5){
+			alert("Subnutrição");
+		}else if(18.5 < imc < 24.9){
+			alert("Peso Saudavel");
+		}else if(25.0 < imc < 29.9){
+			alert("Sobrepeso");
+		}else if(30 < imc < 34.9){
+			alert("Obesidade grau 01");
+		}else if(35 < imc < 39.9){
+			alert("Obesidade grau 02");
+		}else if(imc > 40){
+			alert("Obesidade grau 03");
+		}
+
+
+
+		
+}
+	</script>
+
+</body>
+</html>
